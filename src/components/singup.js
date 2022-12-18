@@ -47,7 +47,7 @@ export default function Singup() {
       const res = await makeRequest.status;
 
       if (res === 200 || res === 201) {
-        history.push("/login");
+        history.push("/");
       }
     } catch (err) {
       console.log(err);
@@ -107,8 +107,6 @@ export default function Singup() {
             signUp
           </button>
         </div>
-
-       
       </form>
     </div>
   );
