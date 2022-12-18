@@ -3,6 +3,7 @@ import Login from "./components/login";
 import Singup from "./components/singup";
 import Home from "./components/home";
 import React, { useState } from "react";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Toggle from "./components/toggle";
@@ -10,6 +11,10 @@ import Navbar from "./components/nav";
 import withProtected from "./components/protectComponent";
 import NoMatch from "./components/noMatch";
 import callBackendApi from "./common";
+
+if (process.env.NODE_ENV === "production") {
+  disableReactDevTools();
+}
 
 export const ThemeContext = React.createContext();
 
@@ -24,11 +29,6 @@ const themes = {
   },
 };
 
-
-
-
-
-
 function App() {
   const [theme, setTheme] = useState("light");
 
@@ -40,13 +40,9 @@ function App() {
     setUserProfile(makeRequest.data);
   };
 
-  const toggleUserProfile =  ()=>{
-
+  const toggleUserProfile = () => {
     setUserProfile(null);
-
-  }
-
-
+  };
 
   function toggleTheme() {
     setTheme(theme === "light" ? "dark" : "light");
@@ -57,7 +53,7 @@ function App() {
     userProfile,
     toggleTheme,
     getUserProfile,
-    toggleUserProfile
+    toggleUserProfile,
   };
 
   console.log(theme);
