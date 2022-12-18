@@ -88,7 +88,7 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route exact path="/">
+          <Route  exact path="/">
             <div className="d-flex justify-content-center mt-5">
               <h1>Login</h1>
             </div>

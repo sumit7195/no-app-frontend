@@ -1,24 +1,31 @@
 import cookie from "react-cookies";
-import { useHistory } from "react-router-dom";
-import { useEffect,useContext, useState } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import { useEffect, useContext, useState } from "react";
 import { ThemeContext } from "../App";
+
+
 
 const withProtected = (Component) => {
   return (props) => {
     const history = useHistory();
 
-const theme = useContext(ThemeContext);
+     const token =  cookie.load('auth')
 
-// cookie.save('auth'); 
-
-    let token = theme.checkAlreadyLogged()
+     console.log('token' ,  typeof token);
 
 
-    
+     useEffect(()=>{
+      if(token==='undefined' || token===undefined){
+      return  history.push('/')
+     }
+  
+     },[token])
 
-    if (!token) {
-     return  history.push("/");
-    }
+   
+  
+
+
+  
 
     return <Component {...props} />;
   };

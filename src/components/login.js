@@ -15,11 +15,7 @@ export default function Login() {
 
   const history = useHistory();
 
-  const token = theme.checkAlreadyLogged();
-
-  if (token) {
-    history.push("/home");
-  }
+ 
 
   const handleChange = (e) => {
     let name = e.target.name;
