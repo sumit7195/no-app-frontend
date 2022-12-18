@@ -32,7 +32,7 @@ export default function Home() {
         setUserFiles(newFiles);
       }
 
-      console.log("delete request", makeRequest);
+      // console.log("delete request", makeRequest);
     } catch (err) {
       alert(err.message);
     }
